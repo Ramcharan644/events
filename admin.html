@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | G. Pullaiah College Event Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-notice-bar">
+    <div class="top-bar-inner">
+      <div class="top-bar-info">
+        <span><i class="fa-solid fa-lock"></i> GPCET Event Administration &amp; Faculty Portal</span>
+        <span><i class="fa-solid fa-location-dot"></i> Kurnool, AP</span>
+      </div>
+      <div class="top-bar-badges">
+        <span>ADMINISTRATOR MODE</span>
+        <span>LIVE DATABASE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="navbar-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/logo.svg" alt="GPCET Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1>G. Pullaiah College Event</h1>
+          <p>College Management &amp; Events Portal</p>
+          <span class="brand-tagline">GPCET Kurnool • Estd. 2007 • Autonomous</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="events.html" class="nav-link"><i class="fa-solid fa-table-list"></i> Events Table</a></li>
+        <li><a href="gallery.html" class="nav-link"><i class="fa-solid fa-images"></i> Campus Photos</a></li>
+        <li><a href="register.html" class="nav-link"><i class="fa-solid fa-user-pen"></i> Register</a></li>
+        <li><a href="admin.html" class="nav-link active"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a></li>
+        <li><button onclick="openAddEventModal()" class="nav-btn"><i class="fa-solid fa-plus"></i> New Event</button></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <div style="background: linear-gradient(135deg, #07192f 0%, #0b2545 100%); color:white; padding: 40px 20px;">
+    <div style="max-width: 1240px; margin: 0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div>
+        <span style="background:rgba(247,127,0,0.25); color:#ff9e40; font-size:0.8rem; font-weight:700; padding:4px 12px; border-radius:20px; text-transform:uppercase;">
+          College Management System
+        </span>
+        <h1 style="font-size:2.2rem; font-weight:800; margin-top:8px;">Administrative Control Center</h1>
+        <p style="color:#cbd5e1; font-size:0.95rem;">
+          Manage the master event repository, monitor student registrations, and configure venue allocations.
+        </p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button onclick="openAddEventModal()" class="btn btn-primary">
+          <i class="fa-solid fa-plus"></i> Add New Event
+        </button>
+        <button onclick="exportDatabaseJSON()" class="btn btn-secondary">
+          <i class="fa-solid fa-download"></i> Backup DB (JSON)
+        </button>
+        <button onclick="confirmResetDefaults()" class="btn btn-danger">
+          <i class="fa-solid fa-arrows-rotate"></i> Reset Defaults
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    
+    <!-- Admin Metrics Grid -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px;">
+      <div style="background:white; padding:22px; border-radius:var(--radius-md); border:1px solid var(--border-color); box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:16px;">
+        <div style="width:50px; height:50px; border-radius:12px; background:#e0f2fe; color:#0284c7; display:flex; align-items:center; justify-content:center; font-size:1.4rem;">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <div>
+          <h4 style="font-size:1.6rem; font-weight:800; color:var(--primary);" id="metricTotalEvents">0</h4>
+          <span style="font-size:0.8rem; color:#64748b; text-transform:uppercase; font-weight:600;">Active Events</span>
+        </div>
+      </div>
+
+      <div style="background:white; padding:22px; border-radius:var(--radius-md); border:1px solid var(--border-color); box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:16px;">
+        <div style="width:50px; height:50px; border-radius:12px; background:#dcfce7; color:#16a34a; display:flex; align-items:center; justify-content:center; font-size:1.4rem;">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <div>
+          <h4 style="font-size:1.6rem; font-weight:800; color:var(--primary);" id="metricTotalRegistrations">0</h4>
+          <span style="font-size:0.8rem; color:#64748b; text-transform:uppercase; font-weight:600;">Student Registrations</span>
+        </div>
+      </div>
+
+      <div style="background:white; padding:22px; border-radius:var(--radius-md); border:1px solid var(--border-color); box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:16px;">
+        <div style="width:50px; height:50px; border-radius:12px; background:#fef3c7; color:#d97706; display:flex; align-items:center; justify-content:center; font-size:1.4rem;">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div>
+          <h4 style="font-size:1.6rem; font-weight:800; color:var(--primary);" id="metricVenuesCount">4</h4>
+          <span style="font-size:0.8rem; color:#64748b; text-transform:uppercase; font-weight:600;">Campus Venues</span>
+        </div>
+      </div>
+
+      <div style="background:white; padding:22px; border-radius:var(--radius-md); border:1px solid var(--border-color); box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:16px;">
+        <div style="width:50px; height:50px; border-radius:12px; background:#f3e8ff; color:#9333ea; display:flex; align-items:center; justify-content:center; font-size:1.4rem;">
+          <i class="fa-solid fa-building-columns"></i>
+        </div>
+        <div>
+          <h4 style="font-size:1.6rem; font-weight:800; color:var(--primary);">8</h4>
+          <span style="font-size:0.8rem; color:#64748b; text-transform:uppercase; font-weight:600;">Departments</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Master Events Table Management -->
+    <div class="event-table-card">
+      <div class="table-toolbar">
+        <div>
+          <h3 style="font-size:1.2rem; font-weight:800; color:var(--primary);">
+            <i class="fa-solid fa-table-list" style="color:var(--accent);"></i> Manage Event Records
+          </h3>
+          <p style="font-size:0.82rem; color:#64748b;">Direct database table view with full editing and deletion rights</p>
+        </div>
+        
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <div class="search-input-wrapper" style="min-width:220px;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="tableSearchInput" class="search-input" placeholder="Filter records...">
+          </div>
+          <button onclick="openAddEventModal()" class="btn btn-sm btn-primary">
+            <i class="fa-solid fa-plus"></i> Add Event
+          </button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="gpcet-table">
+          <thead>
+            <tr>
+              <th>Event ID</th>
+              <th>Event Name</th>
+              <th>Event Type</th>
+              <th>Event Date</th>
+              <th>Venue</th>
+              <th>Description</th>
+              <th style="text-align:right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="eventTableBody">
+            <!-- Rendered by events.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Student Registrations Audit Log -->
+    <div class="event-table-card" style="margin-top: 30px;">
+      <div class="table-toolbar">
+        <div>
+          <h3 style="font-size:1.2rem; font-weight:800; color:var(--primary);">
+            <i class="fa-solid fa-clipboard-user" style="color:var(--accent);"></i> Live Student Registrations Log
+          </h3>
+          <p style="font-size:0.82rem; color:#64748b;">Real-time stream of student admissions for campus events</p>
+        </div>
+        <button onclick="clearRegistrations()" class="btn btn-sm btn-outline">
+          <i class="fa-solid fa-trash-can"></i> Clear Log
+        </button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="gpcet-table">
+          <thead>
+            <tr>
+              <th>Reg ID</th>
+              <th>Student Roll No</th>
+              <th>Student Name</th>
+              <th>Branch &amp; Year</th>
+              <th>Event ID</th>
+              <th>Email / Phone</th>
+              <th>Registration Time</th>
+            </tr>
+          </thead>
+          <tbody id="registrationsTableBody">
+            <!-- Dynamic registration rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Add / Edit Modal -->
+  <div id="eventFormModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalFormTitle">Add New College Event</h3>
+        <button class="modal-close-btn" onclick="closeFormModal()">&times;</button>
+      </div>
+      <form id="eventForm" onsubmit="handleEventFormSubmit(event)">
+        <input type="hidden" id="formMode" value="add">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Event ID <span class="req">*</span></label>
+              <input type="text" id="inpEventId" class="form-control" placeholder="e.g. GPCET-EVT-109" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Event Type <span class="req">*</span></label>
+              <select id="inpEventType" class="form-control" required>
+                <option value="Technical Fest">Technical Fest</option>
+                <option value="Conference">Conference</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Sports">Sports</option>
+                <option value="Hackathon">Hackathon</option>
+                <option value="Seminar">Seminar</option>
+                <option value="Community / NSS">Community / NSS</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Event Name <span class="req">*</span></label>
+              <input type="text" id="inpEventName" class="form-control" placeholder="e.g. IGNITOR 2026 Technical Fest" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Event Date <span class="req">*</span></label>
+              <input type="date" id="inpEventDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Event Time</label>
+              <input type="text" id="inpEventTime" class="form-control" placeholder="09:30 AM - 05:00 PM">
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Venue <span class="req">*</span></label>
+              <input type="text" id="inpVenue" class="form-control" placeholder="e.g. Visvesvaraya Central Auditorium, GPCET" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Organizing Body</label>
+              <input type="text" id="inpOrganizer" class="form-control" placeholder="e.g. CSE Dept & CSI Chapter">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Capacity / Seats</label>
+              <input type="number" id="inpCapacity" class="form-control" value="200" min="10" max="5000">
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Associated Campus Photo</label>
+              <select id="inpImage" class="form-control">
+                <option value="assets/images/campus_main.jpg">Main Campus Academic Block</option>
+                <option value="assets/images/auditorium.jpg">Visvesvaraya Central Auditorium</option>
+                <option value="assets/images/idea_lab.jpg">AICTE IDEA Lab & Innovation Center</option>
+                <option value="assets/images/cultural_sports.jpg">Sports & Cultural Gala Grounds</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Description <span class="req">*</span></label>
+              <textarea id="inpDescription" class="form-control" placeholder="Comprehensive description of the event, eligibility, competitions, and chief guests..." required></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeFormModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>G. Pullaiah College of Engg &amp; Tech</h4>
+        <p>An Autonomous Institution approved by AICTE &amp; Affiliated to JNTUA, Kurnool.</p>
+        <p><i class="fa-solid fa-map-pin" style="color:var(--accent);"></i> Nandyal Road, Kurnool - 518452</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html">Events Table</a></li>
+          <li><a href="gallery.html">Campus Photos</a></li>
+          <li><a href="register.html">Register Student</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>System Administration</h4>
+        <p>GPCET Event Management System version 2.4.0</p>
+        <p>All data saved safely in local storage.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 G. Pullaiah College of Engineering &amp; Technology (GPCET), Kurnool.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/events.js"></script>
+  <script>
+    function updateAdminMetrics() {
+      const events = window.EventDataManager.getEvents();
+      const registrations = window.EventDataManager.getRegistrations();
+      
+      const elEvents = document.getElementById('metricTotalEvents');
+      if (elEvents) elEvents.innerText = events.length;
+
+      const totalRegs = events.reduce((sum, e) => sum + (e.registered_count || 0), 0);
+      const elRegs = document.getElementById('metricTotalRegistrations');
+      if (elRegs) elRegs.innerText = totalRegs + registrations.length;
+
+      renderRegistrationsLog();
+    }
+
+    function renderRegistrationsLog() {
+      const tbody = document.getElementById('registrationsTableBody');
+      if (!tbody) return;
+
+      const regs = window.EventDataManager.getRegistrations();
+      if (regs.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align:center; padding:24px; color:#94a3b8;">
+              No registrations recorded yet. Register a student via the <a href="register.html" style="color:var(--accent); font-weight:600;">Registration page</a> to see entries here.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = regs.map(r => `
+        <tr>
+          <td><span class="event-id-cell" style="background:#dcfce7; color:#15803d;">${r.reg_id}</span></td>
+          <td style="font-weight:700;">${r.roll_no}</td>
+          <td>${r.full_name}</td>
+          <td>${r.branch} (${r.year || '3rd Year'})</td>
+          <td><span class="event-id-cell">${r.event_id}</span></td>
+          <td>${r.email}<br><small style="color:#64748b;">${r.phone}</small></td>
+          <td style="font-size:0.8rem; color:#64748b;">${new Date(r.timestamp).toLocaleString()}</td>
+        </tr>
+      `).join('');
+    }
+
+    function confirmResetDefaults() {
+      if (confirm("Reset event database back to original defaults? Any custom added events will be restored to defaults.")) {
+        window.EventDataManager.resetToDefaults();
+        showToast("Database successfully restored to default events!");
+        renderEventsTable();
+        updateAdminMetrics();
+      }
+    }
+
+    function clearRegistrations() {
+      if (confirm("Clear student registration history?")) {
+        localStorage.removeItem(window.EventDataManager.REGISTRATIONS_KEY);
+        showToast("Registration log cleared.");
+        renderRegistrationsLog();
+        updateAdminMetrics();
+      }
+    }
+
+    function exportDatabaseJSON() {
+      const data = {
+        college: "G. Pullaiah College of Engineering and Technology",
+        portal: "G. Pullaiah College Event Management System",
+        exported_at: new Date().toISOString(),
+        events: window.EventDataManager.getEvents(),
+        registrations: window.EventDataManager.getRegistrations()
+      };
+
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `GPCET_Events_DB_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast("Database exported as JSON backup!");
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateAdminMetrics();
+    });
+  </script>
+</body>
+</html>

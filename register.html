@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Event Registration | G. Pullaiah College Event</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .reg-wrapper {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    @media (max-width: 900px) {
+      .reg-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+    .reg-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-notice-bar">
+    <div class="top-bar-inner">
+      <div class="top-bar-info">
+        <span><i class="fa-solid fa-location-dot"></i> Kurnool, Andhra Pradesh</span>
+        <span><i class="fa-solid fa-ticket"></i> Student Event Registration Desk</span>
+      </div>
+      <div class="top-bar-badges">
+        <span>ONLINE REGISTRATION</span>
+        <span>INSTANT ENTRY PASS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <div class="navbar-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/logo.svg" alt="GPCET Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1>G. Pullaiah College Event</h1>
+          <p>College Management &amp; Events Portal</p>
+          <span class="brand-tagline">GPCET Kurnool • Estd. 2007 • Autonomous</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="events.html" class="nav-link"><i class="fa-solid fa-table-list"></i> Events Table</a></li>
+        <li><a href="gallery.html" class="nav-link"><i class="fa-solid fa-images"></i> Campus Photos</a></li>
+        <li><a href="register.html" class="nav-link active"><i class="fa-solid fa-user-pen"></i> Register</a></li>
+        <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div style="background: linear-gradient(135deg, #07192f 0%, #0b2545 100%); color:white; padding: 36px 20px;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <span style="background:rgba(247,127,0,0.25); color:#ff9e40; font-size:0.8rem; font-weight:700; padding:4px 12px; border-radius:20px; text-transform:uppercase;">
+        Student Portal
+      </span>
+      <h1 style="font-size:2.2rem; font-weight:800; margin-top:8px;">GPCET Event Registration &amp; Pass Generator</h1>
+      <p style="color:#cbd5e1; font-size:0.95rem;">
+        Register for upcoming technical symposiums, workshops, and sports meets. An entry pass will be generated instantly.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    
+    <div class="reg-wrapper">
+      
+      <!-- Registration Form -->
+      <div class="reg-card">
+        <h3 style="font-size: 1.35rem; color: var(--primary); font-weight: 800; margin-bottom: 6px;">
+          <i class="fa-solid fa-pen-to-square" style="color:var(--accent);"></i> Student Registration Form
+        </h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 24px;">
+          Enter your student details and select an event from the G. Pullaiah College events directory.
+        </p>
+
+        <form id="studentRegistrationForm" onsubmit="handleRegistrationSubmit(event)">
+          <div class="form-grid">
+            
+            <div class="form-group full-width">
+              <label class="form-label">Select College Event <span class="req">*</span></label>
+              <select id="regEventSelect" class="form-control" onchange="updateSelectedEventPreview()" required>
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Student Roll Number <span class="req">*</span></label>
+              <input type="text" id="regRollNo" class="form-control" placeholder="e.g. 23AT1A0542" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Full Name <span class="req">*</span></label>
+              <input type="text" id="regFullName" class="form-control" placeholder="e.g. K. Sai Kiran" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Branch / Department <span class="req">*</span></label>
+              <select id="regBranch" class="form-control" required>
+                <option value="CSE">Computer Science &amp; Engg (CSE)</option>
+                <option value="AI &amp; DS">Artificial Intelligence &amp; Data Science</option>
+                <option value="ECE">Electronics &amp; Comm. (ECE)</option>
+                <option value="EEE">Electrical &amp; Electronics (EEE)</option>
+                <option value="ME">Mechanical Engineering (ME)</option>
+                <option value="CE">Civil Engineering (CE)</option>
+                <option value="MBA">MBA / Management</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Academic Year <span class="req">*</span></label>
+              <select id="regYear" class="form-control" required>
+                <option value="1st Year">1st Year (Freshman)</option>
+                <option value="2nd Year">2nd Year (Sophomore)</option>
+                <option value="3rd Year" selected>3rd Year (Junior)</option>
+                <option value="4th Year">4th Year (Senior)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email ID <span class="req">*</span></label>
+              <input type="email" id="regEmail" class="form-control" placeholder="student@gpcet.ac.in" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Contact Number <span class="req">*</span></label>
+              <input type="tel" id="regPhone" class="form-control" placeholder="+91 9876543210" required>
+            </div>
+
+          </div>
+
+          <div style="margin-top: 24px; display:flex; gap:12px;">
+            <button type="submit" class="btn btn-primary" style="flex:1;">
+              <i class="fa-solid fa-ticket"></i> Register &amp; Generate Entry Pass
+            </button>
+            <button type="reset" class="btn btn-secondary">Clear</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Live Event Preview / Generated Entry Pass -->
+      <div>
+        
+        <!-- Generated Pass Container (hidden until registered or shown as sample) -->
+        <div id="ticketContainer" class="ticket-wrapper">
+          <div class="ticket-header">
+            <img src="assets/images/logo.svg" alt="GPCET Logo">
+            <div class="ticket-header-text">
+              <h3>G. PULLAIAH COLLEGE OF ENGG &amp; TECH</h3>
+              <p>OFFICIAL EVENT ENTRY ADMIT PASS • KURNOOL</p>
+            </div>
+          </div>
+
+          <div class="ticket-grid">
+            <div>
+              <div class="ticket-info-row">
+                <span class="ticket-label">Event Name</span>
+                <div class="ticket-val" id="passEventName">IGNITOR 2026 - National Tech Fest</div>
+              </div>
+              
+              <div class="ticket-info-row" style="display:flex; gap:20px;">
+                <div>
+                  <span class="ticket-label">Event ID</span>
+                  <div class="ticket-val" id="passEventId" style="font-family:monospace; color:var(--accent);">GPCET-EVT-101</div>
+                </div>
+                <div>
+                  <span class="ticket-label">Pass / Reg ID</span>
+                  <div class="ticket-val" id="passRegId" style="font-family:monospace; color:#10b981;">GPCET-REG-847291</div>
+                </div>
+              </div>
+
+              <div class="ticket-info-row" style="display:flex; gap:20px;">
+                <div>
+                  <span class="ticket-label">Student Name</span>
+                  <div class="ticket-val" id="passStudentName">Sample Student</div>
+                </div>
+                <div>
+                  <span class="ticket-label">Roll Number</span>
+                  <div class="ticket-val" id="passRollNo">23AT1A0542</div>
+                </div>
+              </div>
+
+              <div class="ticket-info-row">
+                <span class="ticket-label">Department &amp; Year</span>
+                <div class="ticket-val" id="passDeptYear">CSE • 3rd Year</div>
+              </div>
+
+              <div class="ticket-info-row">
+                <span class="ticket-label">Event Date &amp; Venue</span>
+                <div class="ticket-val" id="passVenue" style="font-size:0.88rem;">
+                  <i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> Visvesvaraya Central Auditorium
+                </div>
+              </div>
+            </div>
+
+            <div class="ticket-barcode-box">
+              <div class="ticket-qr" id="passQr">
+                <div style="text-align:center;">
+                  <i class="fa-solid fa-qrcode" style="font-size:3.5rem; color:#0b2545;"></i>
+                  <div style="font-size:0.65rem; margin-top:4px;">SCAN ENTRY</div>
+                </div>
+              </div>
+              <small style="font-size:0.7rem; color:#64748b;">AUTHORIZED PASS</small>
+              <small style="font-size:0.65rem; color:#10b981; font-weight:700;"><i class="fa-solid fa-circle-check"></i> VERIFIED</small>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px; padding-top: 14px; border-top: 1px dashed #cbd5e1; display:flex; justify-content:space-between; align-items:center;">
+            <small style="font-size:0.72rem; color:#64748b;">Please present this pass at the college security check.</small>
+            <button onclick="window.print()" class="btn btn-sm btn-outline no-print">
+              <i class="fa-solid fa-print"></i> Print Admit Pass
+            </button>
+          </div>
+        </div>
+
+        <!-- Venue photo teaser -->
+        <div style="background:white; border-radius:var(--radius-lg); border:1px solid var(--border-color); overflow:hidden; margin-top:20px; box-shadow:var(--shadow-sm);">
+          <div style="position:relative; height:160px;">
+            <img id="selectedEventImg" src="assets/images/auditorium.jpg" alt="Venue" style="width:100%; height:100%; object-fit:cover;">
+            <div style="position:absolute; bottom:10px; left:12px; background:rgba(0,0,0,0.7); color:white; padding:4px 10px; border-radius:4px; font-size:0.78rem;">
+              <i class="fa-solid fa-location-dot"></i> <span id="selectedEventVenue">Visvesvaraya Central Auditorium</span>
+            </div>
+          </div>
+          <div style="padding:14px 18px;">
+            <p id="selectedEventDesc" style="font-size:0.85rem; color:#64748b; line-height:1.5;">
+              Select an event from the form to view full venue and schedule details.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>G. Pullaiah College of Engg &amp; Tech</h4>
+        <p>An Autonomous Institution approved by AICTE &amp; Affiliated to JNTUA. Accredited by NAAC with 'A' Grade.</p>
+        <p><i class="fa-solid fa-map-pin" style="color:var(--accent); margin-right:6px;"></i> Nandyal Road, Kurnool - 518452</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home Portal</a></li>
+          <li><a href="events.html"><i class="fa-solid fa-angle-right"></i> Events Master Table</a></li>
+          <li><a href="gallery.html"><i class="fa-solid fa-angle-right"></i> Campus Photos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help Desk</h4>
+        <p><i class="fa-solid fa-envelope" style="color:var(--accent); margin-right:6px;"></i> registration@gpcet.ac.in</p>
+        <p><i class="fa-solid fa-phone" style="color:var(--accent); margin-right:6px;"></i> +91 8518-285011</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 G. Pullaiah College of Engineering &amp; Technology (GPCET), Kurnool.</p>
+      <p>G. Pullaiah College Event Management System</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    function populateEventsDropdown() {
+      const select = document.getElementById('regEventSelect');
+      const events = window.EventDataManager.getEvents();
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const preselectedId = urlParams.get('event_id');
+
+      select.innerHTML = events.map(e => `
+        <option value="${e.event_id}" ${e.event_id === preselectedId ? 'selected' : ''}>
+          [${e.event_id}] ${e.event_name} (${e.event_type})
+        </option>
+      `).join('');
+
+      updateSelectedEventPreview();
+    }
+
+    function updateSelectedEventPreview() {
+      const select = document.getElementById('regEventSelect');
+      const eventId = select.value;
+      const ev = window.EventDataManager.getEventById(eventId);
+      if (!ev) return;
+
+      document.getElementById('passEventName').innerText = ev.event_name;
+      document.getElementById('passEventId').innerText = ev.event_id;
+      document.getElementById('passVenue').innerHTML = `<i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> ${ev.venue} (${formatDate(ev.event_date)})`;
+      
+      document.getElementById('selectedEventImg').src = ev.image || 'assets/images/campus_main.jpg';
+      document.getElementById('selectedEventVenue').innerText = ev.venue;
+      document.getElementById('selectedEventDesc').innerText = ev.description;
+    }
+
+    function handleRegistrationSubmit(e) {
+      e.preventDefault();
+      
+      const eventId = document.getElementById('regEventSelect').value;
+      const rollNo = document.getElementById('regRollNo').value.trim().toUpperCase();
+      const fullName = document.getElementById('regFullName').value.trim();
+      const branch = document.getElementById('regBranch').value;
+      const year = document.getElementById('regYear').value;
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+
+      const regData = {
+        event_id: eventId,
+        roll_no: rollNo,
+        full_name: fullName,
+        branch: branch,
+        year: year,
+        email: email,
+        phone: phone
+      };
+
+      const result = window.EventDataManager.registerStudent(regData);
+
+      // Update pass UI
+      document.getElementById('passRegId').innerText = result.reg_id;
+      document.getElementById('passStudentName').innerText = fullName;
+      document.getElementById('passRollNo').innerText = rollNo;
+      document.getElementById('passDeptYear').innerText = `${branch} • ${year}`;
+      
+      showToast(`Registration successful! Entry pass #${result.reg_id} generated.`);
+      
+      // Scroll to ticket
+      document.getElementById('ticketContainer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      populateEventsDropdown();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Photos &amp; Venues | G. Pullaiah College Event</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .filter-tab-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 30px;
+      border: 1px solid var(--border-color);
+      background: white;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .gallery-card-detailed {
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .gallery-card-detailed:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .gallery-img-container {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .gallery-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-img-container:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-zoom-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(11, 37, 69, 0.8);
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      backdrop-filter: blur(4px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-notice-bar">
+    <div class="top-bar-inner">
+      <div class="top-bar-info">
+        <span><i class="fa-solid fa-location-dot"></i> Kurnool, Andhra Pradesh</span>
+        <span><i class="fa-solid fa-camera"></i> Campus &amp; Event Photo Archive</span>
+      </div>
+      <div class="top-bar-badges">
+        <span>GPCET CAMPUS</span>
+        <span>AICTE IDEA LAB</span>
+        <span>VISVESVARAYA AUDITORIUM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <div class="navbar-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/logo.svg" alt="GPCET Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1>G. Pullaiah College Event</h1>
+          <p>College Management &amp; Events Portal</p>
+          <span class="brand-tagline">GPCET Kurnool • Estd. 2007 • Autonomous</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="events.html" class="nav-link"><i class="fa-solid fa-table-list"></i> Events Table</a></li>
+        <li><a href="gallery.html" class="nav-link active"><i class="fa-solid fa-images"></i> Campus Photos</a></li>
+        <li><a href="register.html" class="nav-link"><i class="fa-solid fa-user-pen"></i> Register</a></li>
+        <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a></li>
+        <li><a href="events.html" class="nav-btn"><i class="fa-solid fa-calendar-check"></i> View Events</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <div style="background: linear-gradient(135deg, #07192f 0%, #0b2545 100%); color:white; padding: 40px 20px;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <span style="background:rgba(247,127,0,0.25); color:#ff9e40; font-size:0.8rem; font-weight:700; padding:4px 12px; border-radius:20px; text-transform:uppercase;">
+        Visual Campus Experience
+      </span>
+      <h1 style="font-size:2.2rem; font-weight:800; margin-top:8px;">G. Pullaiah College Photos &amp; Event Gallery</h1>
+      <p style="color:#cbd5e1; font-size:0.95rem; max-width:700px;">
+        Take a photographic tour of G. Pullaiah College of Engineering &amp; Technology (GPCET), Kurnool. Highlighting our iconic academic block, high-tech IDEA Lab, auditorium, and vibrant sports grounds.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    
+    <!-- Filter Tabs -->
+    <div class="filter-tab-bar">
+      <button class="filter-btn active" onclick="filterGallery('All', this)">All Photos (4)</button>
+      <button class="filter-btn" onclick="filterGallery('Campus', this)">Main Campus Building</button>
+      <button class="filter-btn" onclick="filterGallery('Auditorium & Events', this)">Central Auditorium</button>
+      <button class="filter-btn" onclick="filterGallery('Labs & Innovation', this)">AICTE IDEA Lab</button>
+      <button class="filter-btn" onclick="filterGallery('Sports & Cultural', this)">Sports &amp; Cultural Grounds</button>
+    </div>
+
+    <!-- Gallery Grid with Full Details -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); gap: 28px;" id="galleryContainer">
+      
+      <!-- Photo 1 -->
+      <div class="gallery-card-detailed" data-category="Campus">
+        <div class="gallery-img-container" onclick="openPhotoModal('assets/images/campus_main.jpg', 'G. Pullaiah College Main Campus Building', 'Magnificent multi-story academic building with grand entrance archway, lush green lawns, and state-of-the-art infrastructure.', 'Main Block, Nandyal Road, Kurnool')">
+          <img src="assets/images/campus_main.jpg" alt="G. Pullaiah College Main Academic Campus">
+          <div class="gallery-zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span style="position:absolute; bottom:14px; left:14px; background:var(--accent); color:white; font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:4px; text-transform:uppercase;">
+            Campus Architecture
+          </span>
+        </div>
+        <div style="padding: 22px;">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">
+            G. Pullaiah College Main Academic Campus
+          </h3>
+          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 12px;">
+            <i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> Main Administrative &amp; Academic Block, GPCET Kurnool
+          </p>
+          <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin-bottom: 18px;">
+            A sprawling, modern multi-storey architectural complex featuring well-ventilated smart lecture halls, advanced computer centers, departmental libraries, and the Principal's administrative secretariat.
+          </p>
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-color); padding-top:14px;">
+            <span style="font-size: 0.8rem; color:#94a3b8; font-weight:600;"><i class="fa-solid fa-award" style="color:var(--accent);"></i> NAAC 'A' Grade Campus</span>
+            <button onclick="openPhotoModal('assets/images/campus_main.jpg', 'G. Pullaiah College Main Campus Building', 'Magnificent multi-story academic building with grand entrance archway, lush green lawns, and state-of-the-art infrastructure.', 'Main Block, Nandyal Road, Kurnool')" class="btn btn-sm btn-outline">
+              <i class="fa-solid fa-expand"></i> View High-Res
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo 2 -->
+      <div class="gallery-card-detailed" data-category="Auditorium & Events">
+        <div class="gallery-img-container" onclick="openPhotoModal('assets/images/auditorium.jpg', 'Visvesvaraya Central Auditorium - Tech Fest 2026', 'Acoustically superior central auditorium packed with students during GPCET Tech Fest 2026 with ultra-wide high-def stage screen.', 'Visvesvaraya Central Auditorium')">
+          <img src="assets/images/auditorium.jpg" alt="Visvesvaraya Auditorium GPCET">
+          <div class="gallery-zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span style="position:absolute; bottom:14px; left:14px; background:#0284c7; color:white; font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:4px; text-transform:uppercase;">
+            Auditorium &amp; Events
+          </span>
+        </div>
+        <div style="padding: 22px;">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">
+            Visvesvaraya Central Auditorium during Tech Fest 2026
+          </h3>
+          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 12px;">
+            <i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> Central Block, Level 2, GPCET
+          </p>
+          <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin-bottom: 18px;">
+            State-of-the-art air-conditioned auditorium accommodating over 1,200 delegates. Equipped with Dolby surround sound, concert acoustics, and massive 4K LED backdrops hosting the IGNITOR National Fest and ETECIS International Conference.
+          </p>
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-color); padding-top:14px;">
+            <span style="font-size: 0.8rem; color:#94a3b8; font-weight:600;"><i class="fa-solid fa-users" style="color:var(--accent);"></i> Seating Capacity: 1,200+</span>
+            <button onclick="openPhotoModal('assets/images/auditorium.jpg', 'Visvesvaraya Central Auditorium - Tech Fest 2026', 'Acoustically superior central auditorium packed with students during GPCET Tech Fest 2026 with ultra-wide high-def stage screen.', 'Visvesvaraya Central Auditorium')" class="btn btn-sm btn-outline">
+              <i class="fa-solid fa-expand"></i> View High-Res
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo 3 -->
+      <div class="gallery-card-detailed" data-category="Labs & Innovation">
+        <div class="gallery-img-container" onclick="openPhotoModal('assets/images/idea_lab.jpg', 'AICTE IDEA Lab & Innovation Center', 'State-of-the-art AICTE IDEA Lab with 3D printers, laser cutters, embedded systems, and robotics workstations where students prototype innovations.', 'Innovatia Center, GPCET')">
+          <img src="assets/images/idea_lab.jpg" alt="AICTE IDEA Lab GPCET">
+          <div class="gallery-zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span style="position:absolute; bottom:14px; left:14px; background:#16a34a; color:white; font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:4px; text-transform:uppercase;">
+            Innovation &amp; Labs
+          </span>
+        </div>
+        <div style="padding: 22px;">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">
+            AICTE IDEA Lab &amp; Computer Engineering Center
+          </h3>
+          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 12px;">
+            <i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> Innovatia Makers Forge, GPCET
+          </p>
+          <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin-bottom: 18px;">
+            AICTE-sanctioned Idea Development, Evaluation &amp; Application (IDEA) Lab providing students hands-on engineering exposure with industrial 3D printers, laser cutters, PCB milling machines, and high-performance computing clusters.
+          </p>
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-color); padding-top:14px;">
+            <span style="font-size: 0.8rem; color:#94a3b8; font-weight:600;"><i class="fa-solid fa-microchip" style="color:var(--accent);"></i> AICTE Sanctioned Hub</span>
+            <button onclick="openPhotoModal('assets/images/idea_lab.jpg', 'AICTE IDEA Lab & Innovation Center', 'State-of-the-art AICTE IDEA Lab with 3D printers, laser cutters, embedded systems, and robotics workstations where students prototype innovations.', 'Innovatia Center, GPCET')" class="btn btn-sm btn-outline">
+              <i class="fa-solid fa-expand"></i> View High-Res
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo 4 -->
+      <div class="gallery-card-detailed" data-category="Sports & Cultural">
+        <div class="gallery-img-container" onclick="openPhotoModal('assets/images/cultural_sports.jpg', 'Annual Sports & Cultural Meet Grounds', 'Massive student turnout during the annual cultural gala Vibrance and sports festival at the open-air campus arena.', 'College Sports Arena & Open Grounds')">
+          <img src="assets/images/cultural_sports.jpg" alt="Cultural Sports Grounds GPCET">
+          <div class="gallery-zoom-badge"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span style="position:absolute; bottom:14px; left:14px; background:#9333ea; color:white; font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:4px; text-transform:uppercase;">
+            Cultural &amp; Sports
+          </span>
+        </div>
+        <div style="padding: 22px;">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">
+            Annual Sports &amp; Cultural Festival Grounds
+          </h3>
+          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 12px;">
+            <i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> Open Air Campus Sports Arena, GPCET
+          </p>
+          <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin-bottom: 18px;">
+            The central hub for collegiate vibrance, hosting the annual VIBRANCE cultural festival, musical concerts, inter-collegiate cricket matches, volleyball leagues, and athletics meets with cheering student audiences.
+          </p>
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-color); padding-top:14px;">
+            <span style="font-size: 0.8rem; color:#94a3b8; font-weight:600;"><i class="fa-solid fa-users" style="color:var(--accent);"></i> Open Air Capacity: 3,500+</span>
+            <button onclick="openPhotoModal('assets/images/cultural_sports.jpg', 'Annual Sports & Cultural Meet Grounds', 'Massive student turnout during the annual cultural gala Vibrance and sports festival at the open-air campus arena.', 'College Sports Arena & Open Grounds')" class="btn btn-sm btn-outline">
+              <i class="fa-solid fa-expand"></i> View High-Res
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>G. Pullaiah College of Engg &amp; Tech</h4>
+        <p>An Autonomous Institution approved by AICTE, New Delhi &amp; Permanently Affiliated to JNTUA, Ananthapuramu.</p>
+        <p><i class="fa-solid fa-map-pin" style="color:var(--accent); margin-right:6px;"></i> Nandyal Road, Kurnool - 518452, Andhra Pradesh</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home Portal</a></li>
+          <li><a href="events.html"><i class="fa-solid fa-angle-right"></i> Events Master Table</a></li>
+          <li><a href="gallery.html"><i class="fa-solid fa-angle-right"></i> Campus Photos</a></li>
+          <li><a href="register.html"><i class="fa-solid fa-angle-right"></i> Student Registration</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Campus Facilities</h4>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fa-solid fa-angle-right"></i> Visvesvaraya Auditorium</a></li>
+          <li><a href="#"><i class="fa-solid fa-angle-right"></i> AICTE IDEA Lab</a></li>
+          <li><a href="#"><i class="fa-solid fa-angle-right"></i> Central Library</a></li>
+          <li><a href="#"><i class="fa-solid fa-angle-right"></i> Sports Arena</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact College</h4>
+        <p><i class="fa-solid fa-envelope" style="color:var(--accent); margin-right:6px;"></i> info@gpcet.ac.in</p>
+        <p><i class="fa-solid fa-phone" style="color:var(--accent); margin-right:6px;"></i> +91 8518-285011</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 G. Pullaiah College of Engineering &amp; Technology (GPCET). All Rights Reserved.</p>
+      <p>G. Pullaiah College Event Management System</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    function filterGallery(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.gallery-card-detailed');
+      cards.forEach(card => {
+        if (category === 'All' || card.getAttribute('data-category') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G. Pullaiah College Event | College Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-notice-bar">
+    <div class="top-bar-inner">
+      <div class="top-bar-info">
+        <span><i class="fa-solid fa-location-dot"></i> Kurnool, Andhra Pradesh</span>
+        <span><i class="fa-solid fa-building-columns"></i> Affiliated to JNTUA, Ananthapuramu</span>
+        <span><i class="fa-solid fa-phone"></i> +91 8518-285011 / 285088</span>
+      </div>
+      <div class="top-bar-badges">
+        <span>NAAC 'A' GRADE</span>
+        <span>AUTONOMOUS</span>
+        <span>AICTE APPROVED</span>
+        <span>NBA ACCREDITED</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <div class="navbar-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/images/logo.svg" alt="GPCET Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1>G. Pullaiah College Event</h1>
+          <p>College Management &amp; Events Portal</p>
+          <span class="brand-tagline">GPCET Kurnool • Estd. 2007 • Autonomous</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="events.html" class="nav-link"><i class="fa-solid fa-table-list"></i> Events Table</a></li>
+        <li><a href="gallery.html" class="nav-link"><i class="fa-solid fa-images"></i> Campus Photos</a></li>
+        <li><a href="register.html" class="nav-link"><i class="fa-solid fa-user-pen"></i> Register</a></li>
+        <li><a href="admin.html" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a></li>
+        <li><a href="events.html#addEvent" class="nav-btn"><i class="fa-solid fa-plus"></i> Add Event</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-pill">
+        <i class="fa-solid fa-bullhorn"></i> Welcome to G. Pullaiah College Event Management System
+      </div>
+      <h1 class="hero-title">
+        Discover, Manage &amp; Celebrate <span>College Events</span>
+      </h1>
+      <p class="hero-subtitle">
+        Empowering young technocrats, innovators, and leaders at G. Pullaiah College of Engineering and Technology (GPCET), Kurnool. Experience national symposiums, hackathons, cultural festivals, and research conventions.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="events.html" class="btn btn-primary">
+          <i class="fa-solid fa-table-list"></i> Explore Events Table
+        </a>
+        <a href="gallery.html" class="btn btn-secondary">
+          <i class="fa-solid fa-images"></i> View Campus Photos
+        </a>
+        <a href="register.html" class="btn btn-secondary">
+          <i class="fa-solid fa-id-card"></i> Student Registration
+        </a>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <h3>25+</h3>
+          <p>Annual Events</p>
+        </div>
+        <div class="stat-item">
+          <h3>5,000+</h3>
+          <p>Student Innovators</p>
+        </div>
+        <div class="stat-item">
+          <h3>8</h3>
+          <p>Engg. Departments</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>Autonomous &amp; NAAC 'A'</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    
+    <!-- Quick Overview Section -->
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <h2><i class="fa-solid fa-star" style="color:var(--accent);"></i> Flagship Campus Events</h2>
+        <p>Highlights of premier events happening across G. Pullaiah College campus</p>
+      </div>
+      <div>
+        <a href="events.html" class="btn btn-sm btn-outline">
+          View All Events <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Featured Event Cards -->
+    <div class="events-grid" id="featuredCardsGrid">
+      <!-- Card 1 -->
+      <div class="event-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/auditorium.jpg" alt="IGNITOR Tech Fest">
+          <span class="badge badge-tech card-type-badge">Technical Fest</span>
+          <span class="card-date-badge"><i class="fa-regular fa-calendar"></i> Nov 15, 2026</span>
+        </div>
+        <div class="card-body">
+          <span class="card-id-tag">EVENT ID: GPCET-EVT-101</span>
+          <h3 class="card-title">IGNITOR 2026 - National Technical Fest</h3>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <i class="fa-solid fa-location-dot"></i> Visvesvaraya Central Auditorium
+            </div>
+            <div class="card-meta-item">
+              <i class="fa-solid fa-clock"></i> 09:30 AM - 05:30 PM
+            </div>
+          </div>
+          <p class="card-desc">Flagship national symposium of GPCET featuring coding marathons, paper presentations, bot wars, project expo, and web design challenges.</p>
+          <div class="card-footer">
+            <button onclick="viewEventDetails('GPCET-EVT-101')" class="btn btn-sm btn-outline">Details</button>
+            <a href="register.html?event_id=GPCET-EVT-101" class="btn btn-sm btn-primary">Register Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="event-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/campus_main.jpg" alt="ETECIS Conference">
+          <span class="badge badge-conference card-type-badge">Conference</span>
+          <span class="card-date-badge"><i class="fa-regular fa-calendar"></i> Dec 18, 2026</span>
+        </div>
+        <div class="card-body">
+          <span class="card-id-tag">EVENT ID: GPCET-EVT-102</span>
+          <h3 class="card-title">ETECIS 2026: Int. Conference on Smart Systems</h3>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <i class="fa-solid fa-location-dot"></i> Main Block Seminar Hall 1
+            </div>
+            <div class="card-meta-item">
+              <i class="fa-solid fa-clock"></i> 10:00 AM - 05:00 PM
+            </div>
+          </div>
+          <p class="card-desc">International Conference on Emerging Trends in Electronics, Computing, and Intelligent Systems with Scopus-indexed research proceedings.</p>
+          <div class="card-footer">
+            <button onclick="viewEventDetails('GPCET-EVT-102')" class="btn btn-sm btn-outline">Details</button>
+            <a href="register.html?event_id=GPCET-EVT-102" class="btn btn-sm btn-primary">Register Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="event-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/idea_lab.jpg" alt="AICTE IDEA Lab">
+          <span class="badge badge-workshop card-type-badge">Workshop</span>
+          <span class="card-date-badge"><i class="fa-regular fa-calendar"></i> Oct 24, 2026</span>
+        </div>
+        <div class="card-body">
+          <span class="card-id-tag">EVENT ID: GPCET-EVT-103</span>
+          <h3 class="card-title">AICTE IDEA Lab IoT &amp; 3D Prototyping</h3>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <i class="fa-solid fa-location-dot"></i> AICTE IDEA Lab &amp; Innovation Center
+            </div>
+            <div class="card-meta-item">
+              <i class="fa-solid fa-clock"></i> 09:00 AM - 04:30 PM
+            </div>
+          </div>
+          <p class="card-desc">Practical hands-on workshop on embedded systems, ESP32 microcontrollers, 3D printing rapid prototyping, and sensor integration.</p>
+          <div class="card-footer">
+            <button onclick="viewEventDetails('GPCET-EVT-103')" class="btn btn-sm btn-outline">Details</button>
+            <a href="register.html?event_id=GPCET-EVT-103" class="btn btn-sm btn-primary">Register Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Official Event Table Preview Section -->
+    <div class="section-header" style="margin-top: 30px;">
+      <div class="section-title-wrap">
+        <h2><i class="fa-solid fa-table" style="color:var(--accent);"></i> College Events Management Table</h2>
+        <p>Interactive tabular overview with Event ID, Event Name, Event Type, Event Date, Venue, and Description</p>
+      </div>
+      <div>
+        <a href="events.html" class="btn btn-sm btn-primary">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full Table &amp; Manage
+        </a>
+      </div>
+    </div>
+
+    <!-- Event Table Card -->
+    <div class="event-table-card">
+      <div class="table-toolbar">
+        <div class="search-filter-group">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="tableSearchInput" class="search-input" placeholder="Search event by name, venue, type, ID...">
+          </div>
+          <select id="typeFilterSelect" class="select-filter">
+            <option value="All">All Event Types</option>
+            <option value="Technical">Technical Fest</option>
+            <option value="Conference">Conference</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Sports">Sports</option>
+            <option value="Hackathon">Hackathon</option>
+          </select>
+          <select id="sortSelect" class="select-filter">
+            <option value="asc">Date: Soonest First</option>
+            <option value="desc">Date: Latest First</option>
+            <option value="name">Sort by Name</option>
+          </select>
+        </div>
+        <div class="table-actions">
+          <button onclick="exportEventsToCSV()" class="btn btn-sm btn-outline" title="Export Table as CSV">
+            <i class="fa-solid fa-file-csv"></i> Export CSV
+          </button>
+          <button onclick="openAddEventModal()" class="btn btn-sm btn-primary" title="Add a New Event">
+            <i class="fa-solid fa-plus"></i> Add Event
+          </button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="gpcet-table">
+          <thead>
+            <tr>
+              <th>Event ID</th>
+              <th>Event Name</th>
+              <th>Event Type</th>
+              <th>Event Date</th>
+              <th>Venue</th>
+              <th>Description</th>
+              <th style="text-align:right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="eventTableBody">
+            <!-- Dynamic Event Rows populated via events.js -->
+          </tbody>
+        </table>
+      </div>
+      
+      <div style="padding: 12px 20px; background: #f8fafc; border-top: 1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+        <span id="eventCountBadge" style="font-size: 0.85rem; color:#64748b; font-weight:600;">Loading events...</span>
+        <a href="events.html" style="font-size:0.85rem; color:var(--accent); font-weight:700;">View detailed table &raquo;</a>
+      </div>
+    </div>
+
+    <!-- Campus Photos Highlights Section -->
+    <div class="section-header" style="margin-top: 40px;">
+      <div class="section-title-wrap">
+        <h2><i class="fa-solid fa-camera-retro" style="color:var(--accent);"></i> G. Pullaiah College Campus &amp; Event Photos</h2>
+        <p>Explore real campus architecture, modern labs, central auditorium, and festive student events</p>
+      </div>
+      <div>
+        <a href="gallery.html" class="btn btn-sm btn-outline">
+          View All Photos <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Photo 1: Main Campus -->
+      <div class="gallery-item" onclick="openPhotoModal('assets/images/campus_main.jpg', 'G. Pullaiah College Main Campus Building', 'Magnificent multi-story academic building with grand entrance archway, lush green lawns, and state-of-the-art infrastructure.', 'Main Academic Block, GPCET Kurnool')">
+        <img src="assets/images/campus_main.jpg" alt="G. Pullaiah College Main Campus">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">Campus Architecture</span>
+          <h3 class="gallery-title">G. Pullaiah College Main Academic Campus</h3>
+          <p class="gallery-location"><i class="fa-solid fa-location-dot"></i> Main Block, Nandyal Road, Kurnool</p>
+        </div>
+      </div>
+
+      <!-- Photo 2: Auditorium Event -->
+      <div class="gallery-item" onclick="openPhotoModal('assets/images/auditorium.jpg', 'Visvesvaraya Central Auditorium - Tech Fest 2026', 'Acoustically superior central auditorium packed with students during GPCET Tech Fest 2026 with ultra-wide high-def stage screen.', 'Visvesvaraya Central Auditorium')">
+        <img src="assets/images/auditorium.jpg" alt="Visvesvaraya Auditorium GPCET">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">Auditorium &amp; Events</span>
+          <h3 class="gallery-title">Visvesvaraya Auditorium - GPCET Tech Fest 2026</h3>
+          <p class="gallery-location"><i class="fa-solid fa-location-dot"></i> Central Block, Level 2</p>
+        </div>
+      </div>
+
+      <!-- Photo 3: IDEA Lab -->
+      <div class="gallery-item" onclick="openPhotoModal('assets/images/idea_lab.jpg', 'AICTE IDEA Lab & Innovation Center', 'State-of-the-art AICTE IDEA Lab with 3D printers, laser cutters, embedded systems, and robotics workstations where students prototype innovations.', 'Innovatia Center, GPCET')">
+        <img src="assets/images/idea_lab.jpg" alt="AICTE IDEA Lab GPCET">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">Labs &amp; Innovation</span>
+          <h3 class="gallery-title">AICTE IDEA Lab &amp; Innovation Center</h3>
+          <p class="gallery-location"><i class="fa-solid fa-location-dot"></i> Innovatia Makers Forge</p>
+        </div>
+      </div>
+
+      <!-- Photo 4: Cultural Sports -->
+      <div class="gallery-item" onclick="openPhotoModal('assets/images/cultural_sports.jpg', 'Annual Sports & Cultural Meet Grounds', 'Massive student turnout during the annual cultural gala Vibrance and sports festival at the open-air campus arena.', 'College Sports Arena & Open Grounds')">
+        <img src="assets/images/cultural_sports.jpg" alt="Cultural Sports Grounds GPCET">
+        <div class="gallery-overlay">
+          <span class="gallery-tag">Cultural &amp; Sports</span>
+          <h3 class="gallery-title">Annual Sports &amp; Cultural Meet Grounds</h3>
+          <p class="gallery-location"><i class="fa-solid fa-location-dot"></i> Campus Sports Pavilion</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- College Highlights & Departments -->
+    <div style="background: white; border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 32px; margin-top: 20px; box-shadow: var(--shadow-sm);">
+      <h3 style="font-size: 1.35rem; color: var(--primary); margin-bottom: 8px;">
+        <i class="fa-solid fa-graduation-cap" style="color:var(--accent);"></i> Academic Departments at G. Pullaiah College
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 24px;">
+        Each department regularly hosts workshops, hackathons, national conferences, and industrial guest lectures.
+      </p>
+      
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+        <div style="background: #f8fafc; padding: 18px; border-radius: 8px; border-left: 4px solid #00b4d8;">
+          <h4 style="font-size: 1rem; color: #0b2545; margin-bottom: 4px;">Computer Science &amp; Engg (CSE)</h4>
+          <p style="font-size: 0.82rem; color: #64748b;">Coding fests, hackathons, cloud computing, and AI hack fests.</p>
+        </div>
+        <div style="background: #f8fafc; padding: 18px; border-radius: 8px; border-left: 4px solid #f77f00;">
+          <h4 style="font-size: 1rem; color: #0b2545; margin-bottom: 4px;">Electronics &amp; Comm. (ECE)</h4>
+          <p style="font-size: 0.82rem; color: #64748b;">ETECIS Conference, VLSI design, IoT &amp; robotics symposiums.</p>
+        </div>
+        <div style="background: #f8fafc; padding: 18px; border-radius: 8px; border-left: 4px solid #10b981;">
+          <h4 style="font-size: 1rem; color: #0b2545; margin-bottom: 4px;">Artificial Intelligence &amp; Data Sci</h4>
+          <p style="font-size: 0.82rem; color: #64748b;">Machine learning challenges, generative AI sprints, data summits.</p>
+        </div>
+        <div style="background: #f8fafc; padding: 18px; border-radius: 8px; border-left: 4px solid #7e22ce;">
+          <h4 style="font-size: 1rem; color: #0b2545; margin-bottom: 4px;">Mechanical Engineering (ME)</h4>
+          <p style="font-size: 0.82rem; color: #64748b;">Smart materials workshops, EV design, 3D printing &amp; CAD fests.</p>
+        </div>
+        <div style="background: #f8fafc; padding: 18px; border-radius: 8px; border-left: 4px solid #e11d48;">
+          <h4 style="font-size: 1rem; color: #0b2545; margin-bottom: 4px;">Electrical &amp; Electronics (EEE)</h4>
+          <p style="font-size: 0.82rem; color: #64748b;">Renewable power challenges, circuit debugging, automation expo.</p>
+        </div>
+        <div style="background: #f8fafc; padding: 18px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+          <h4 style="font-size: 1rem; color: #0b2545; margin-bottom: 4px;">Civil Engineering (CE)</h4>
+          <p style="font-size: 0.82rem; color: #64748b;">Bridge building, survey camps, green building workshops.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Add / Edit Event Modal -->
+  <div id="eventFormModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalFormTitle">Add New College Event</h3>
+        <button class="modal-close-btn" onclick="closeFormModal()">&times;</button>
+      </div>
+      <form id="eventForm" onsubmit="handleEventFormSubmit(event)">
+        <input type="hidden" id="formMode" value="add">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Event ID <span class="req">*</span></label>
+              <input type="text" id="inpEventId" class="form-control" placeholder="e.g. GPCET-EVT-109" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Event Type <span class="req">*</span></label>
+              <select id="inpEventType" class="form-control" required>
+                <option value="Technical Fest">Technical Fest</option>
+                <option value="Conference">Conference</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Sports">Sports</option>
+                <option value="Hackathon">Hackathon</option>
+                <option value="Seminar">Seminar</option>
+                <option value="Community / NSS">Community / NSS</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Event Name <span class="req">*</span></label>
+              <input type="text" id="inpEventName" class="form-control" placeholder="e.g. IGNITOR 2026 Technical Fest" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Event Date <span class="req">*</span></label>
+              <input type="date" id="inpEventDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Event Time</label>
+              <input type="text" id="inpEventTime" class="form-control" placeholder="09:30 AM - 05:00 PM">
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Venue <span class="req">*</span></label>
+              <input type="text" id="inpVenue" class="form-control" placeholder="e.g. Visvesvaraya Central Auditorium, GPCET" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Organizing Body</label>
+              <input type="text" id="inpOrganizer" class="form-control" placeholder="e.g. CSE Dept & CSI Chapter">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Capacity / Seats</label>
+              <input type="number" id="inpCapacity" class="form-control" value="200" min="10" max="5000">
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Associated Campus Photo</label>
+              <select id="inpImage" class="form-control">
+                <option value="assets/images/campus_main.jpg">Main Campus Academic Block</option>
+                <option value="assets/images/auditorium.jpg">Visvesvaraya Central Auditorium</option>
+                <option value="assets/images/idea_lab.jpg">AICTE IDEA Lab & Innovation Center</option>
+                <option value="assets/images/cultural_sports.jpg">Sports & Cultural Gala Grounds</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Description <span class="req">*</span></label>
+              <textarea id="inpDescription" class="form-control" placeholder="Comprehensive description of the event, eligibility, competitions, and chief guests..." required></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeFormModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>G. Pullaiah College of Engg &amp; Tech</h4>
+        <p>An Autonomous Institution approved by AICTE, New Delhi &amp; Permanently Affiliated to JNTUA, Ananthapuramu. Accredited by NAAC with 'A' Grade and NBA.</p>
+        <p><i class="fa-solid fa-map-pin" style="color:var(--accent); margin-right:6px;"></i> Nandyal Road, Kurnool - 518452, Andhra Pradesh, India</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home Portal</a></li>
+          <li><a href="events.html"><i class="fa-solid fa-angle-right"></i> Events Table</a></li>
+          <li><a href="gallery.html"><i class="fa-solid fa-angle-right"></i> Campus Photo Gallery</a></li>
+          <li><a href="register.html"><i class="fa-solid fa-angle-right"></i> Event Registration</a></li>
+          <li><a href="admin.html"><i class="fa-solid fa-angle-right"></i> Admin Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Event Categories</h4>
+        <ul class="footer-links">
+          <li><a href="events.html?type=Technical"><i class="fa-solid fa-angle-right"></i> Technical Fests</a></li>
+          <li><a href="events.html?type=Cultural"><i class="fa-solid fa-angle-right"></i> Cultural Meets</a></li>
+          <li><a href="events.html?type=Workshop"><i class="fa-solid fa-angle-right"></i> IDEA Lab Workshops</a></li>
+          <li><a href="events.html?type=Sports"><i class="fa-solid fa-angle-right"></i> Sports Tournaments</a></li>
+          <li><a href="events.html?type=Conference"><i class="fa-solid fa-angle-right"></i> International Conferences</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Event Cell</h4>
+        <p><i class="fa-solid fa-envelope" style="color:var(--accent); margin-right:6px;"></i> events@gpcet.ac.in</p>
+        <p><i class="fa-solid fa-phone" style="color:var(--accent); margin-right:6px;"></i> +91 8518-285011 / 285088</p>
+        <p><i class="fa-solid fa-globe" style="color:var(--accent); margin-right:6px;"></i> www.gpcet.ac.in</p>
+        <div style="display:flex; gap:10px; margin-top:14px;">
+          <a href="#" class="btn btn-sm btn-secondary" style="padding:6px 10px;"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="btn btn-sm btn-secondary" style="padding:6px 10px;"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="btn btn-sm btn-secondary" style="padding:6px 10px;"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="btn btn-sm btn-secondary" style="padding:6px 10px;"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 G. Pullaiah College of Engineering &amp; Technology (GPCET). All Rights Reserved.</p>
+      <p>G. Pullaiah College Event Management System | Designed for Academic &amp; Student Excellence</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/events.js"></script>
+</body>
+</html>
